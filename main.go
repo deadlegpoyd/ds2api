@@ -22,11 +22,13 @@ func main() {
 	}
 
 	log.Printf("Starting ds2api %s on port %s", Version, cfg.Port)
+	log.Printf("Build info: version=%s", Version)
 
 	server := NewServer(cfg)
 	if err := server.Run(); err != nil {
 		log.Fatalf("Server exited with error: %v", err)
 	}
 
+	// os.Exit(0) is redundant here since main() returning has the same effect
 	os.Exit(0)
 }
